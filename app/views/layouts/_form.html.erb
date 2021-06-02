@@ -1,4 +1,4 @@
-
+<div class="text-center">
 <% if user_signed_in? %>
       <%= form_with url: search_path, method: :get, local: :true do |f| %>
       <%= f.text_field :word %>
@@ -7,3 +7,4 @@
       <%= f.submit "検索" %>
       <% end %>
 <% end %>
+</div>
