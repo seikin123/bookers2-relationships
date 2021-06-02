@@ -1,2 +1,12 @@
-<h1>Searchs#seach</h1>
-<p>Find me in app/views/searchs/seach.html.erb</p>
+<p id="notice"></p>
+<%= render 'searchs/form' %>
+
+<% if @range == "User" %>
+  <h2>Users search</h2>
+    <%= render 'users/index', user: @users %> <%# 検索対象がUserのとき、ユーザーを一覧表示 %>
+<% else %>
+  <h2>Book search</h2>
+  <%= render 'books/index', book: @books %> <%# 検索対象がBookのとき、投稿を一覧表示 %>
+<% end %>
+
+
