@@ -1,6 +1,9 @@
 <p id="notice"></p>
 <div class='col-md'>
   <h3>Follower Users</h3>
+    <% if @users.empty? %>
+        <span>ユーザーはいません</span>
+    <% else %>
     <table class='table table-hover table-inverse'>
       <thead>
         <tr>
@@ -25,4 +28,5 @@
       </table>
     </tr>
   </table>
+  <% end %>
 </div>
