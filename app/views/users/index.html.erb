@@ -6,7 +6,6 @@
         <table class="table">
         <tr><%= render 'users/profile', user: @user %></tr>
         </table>
-        
         <div>
           <%= render 'books/form', {book: @booknew, btn: 'Create Book'} %>
         </div>
@@ -31,14 +30,14 @@
           <td><%= "フォロワー数:#{user.followed.count}" %></td>
         <% unless current_user == user %>
           <% if current_user.following?(user) %>
-                  <td><%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %></td>
-                <% else %>
-                  <td><%= link_to 'フォローする', follow_path(user.id), method: :POST %></td>
+            <td><%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %></td>
+          <% else %>
+            <td><%= link_to 'フォローする', follow_path(user.id), method: :POST %></td>
           <% end %>
           <% end %>
             <td><%= link_to "Show", "/users/#{user.id}" %></td>
           </tr>
-        <% end %>
+          <% end %>
         </tbody>
       </table>
     </div>
