@@ -19,23 +19,25 @@
         <tr>
           <th>image</th>
           <th>name</th>
-          <th clspan="3"></th>
+          <th colspan="4"></th>
         </tr>
         </thead>
         <tbody>
-          <% @users.each do |user| %>
+        <% @users.each do |user| %>
         <tr>
           <td><%= attachment_image_tag user, :profile_image, size: "40x40",fallback: "no_image.jpg" %></td>
           <td><%= user.name %></td>
-        <% if user_signed_in? %>
+          <td><%= "フォロー数:#{user.follower.count}" %></td>
+          <td><%= "フォロワー数:#{user.followed.count}" %></td>
+        <% unless current_user == user %>
           <% if current_user.following?(user) %>
                   <td><%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %></td>
                 <% else %>
                   <td><%= link_to 'フォローする', follow_path(user.id), method: :POST %></td>
-                <% end %>
-                <% end %>
-          <td><%= link_to "Show", "/users/#{user.id}" %></td>
-        </tr>
+          <% end %>
+          <% end %>
+            <td><%= link_to "Show", "/users/#{user.id}" %></td>
+          </tr>
         <% end %>
         </tbody>
       </table>
